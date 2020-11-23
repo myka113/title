@@ -10,6 +10,7 @@ const firstPicture = document.getElementsByClassName('firstPicture')
 const stock = document.getElementsByClassName('stock')
 
 
+console.log(stock);
 
 
 
