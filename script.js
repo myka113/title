@@ -1,210 +1,252 @@
-const shopNowButton = document.getElementById('shopNowButton')
-const intro = document.getElementById('intro')
-const main = document.getElementById('main')
-
-const name = document.getElementsByClassName('name')
-
-
-const firstPicture = document.getElementsByClassName('firstPicture')
-
-const stock = document.getElementsByClassName('stock')
-
-
-console.log(stock);
-
-
-
-let products = [
-    {
-      title: "OZWEEGO SHOES",
-      photos: [
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/f204ed5c024d42498e67ab9e012eb10f_9366/OZWEEGO_Shoes_White_FV9654_01_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/9535beef288247efb9e4ab9e012ec028_9366/OZWEEGO_Shoes_White_FV9654_02_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/dad6b877e7fd4f1eb278ab9e012ec786_9366/OZWEEGO_Shoes_White_FV9654_03_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/9ced8f95abe745cd95b6ab9f001dc207_9366/OZWEEGO_Shoes_White_FV9654_04_standard.jpg"
-      ],
-      stock: "2",
-      price: "80",
-      id: "1"
-    },
-    {
-      title: "ZX 2K BOOST SHOES",
-      photos: [
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/a00e176273414e2d986babc90099fa3e_9366/ZX_2K_Boost_Shoes_White_FV9996_01_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/22ca1f055a294725880aabc9009a070a_9366/ZX_2K_Boost_Shoes_White_FV9996_02_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/4560338c129440d894d9abc9009a0e97_9366/ZX_2K_Boost_Shoes_White_FV9996_03_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/fd11b47048434931acd9abc9009a1542_9366/ZX_2K_Boost_Shoes_White_FV9996_04_standard.jpg"
-      ],
-      stock: "8",
-      price: "150",
-      id: "2"
-    },
-  
-    {
-      title: "X90004D SHOES",
-      photos: [
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/d6641ce0097f4b9ca22cabdd00a1c66e_9366/X90004D_Shoes_Black_FW7093_01_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/9bca524f6e564ce19f7babdd00a1d334_9366/X90004D_Shoes_Black_FW7093_02_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/0075d5d3a0b8418c9756abdd00a1dad2_9366/X90004D_Shoes_Black_FW7093_03_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/efbfcf28ea55442e8130abdd00a1e173_9366/X90004D_Shoes_Black_FW7093_04_standard.jpg"
-      ],
-      stock: "5",
-      price: "160",
-      id: "3"
-    },
-  
-    {
-      title: "ULTRABOOST 20 SHOES",
-      photos: [
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/c506dc4a84804ab1a907abad011ebdf0_9366/Ultraboost_20_Shoes_Black_FV8330_01_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/d211447e73564a9d9d6babad011ec8fb_9366/Ultraboost_20_Shoes_Black_FV8330_02_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/9b01b768b58546cebcf1abad011ecf01_9366/Ultraboost_20_Shoes_Black_FV8330_03_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/fd2750a89cb74c73beb4abad011ed544_9366/Ultraboost_20_Shoes_Black_FV8330_04_standard.jpg"
-      ],
-      stock: "12",
-      price: "180",
-      id: "4"
-    },
-  
-    {
-      title: "OZWEEGO SHOES",
-      photos: [
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/d8afb099dc9047789c63abed0072c6c1_9366/OZWEEGO_Shoes_Grey_FZ1963_01_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/be589225059b44868386abed0072d488_9366/OZWEEGO_Shoes_Grey_FZ1963_02_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/f897d99916184c928d19abed0072dbd1_9366/OZWEEGO_Shoes_Grey_FZ1963_03_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/d197459d4fcb494380d0abed0072e33a_9366/OZWEEGO_Shoes_Grey_FZ1963_04_standard.jpg"
-      ],
-      stock: "25",
-      price: "110",
-      id: "5"
-    },
-  
-    {
-      title: "ZX 2K BOOST SHOES",
-      photos: [
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/16216c130f5846ed8c9eabc600b3ea6f_9366/ZX_2K_Boost_Shoes_White_FX8835_01_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/34f64adbe930404f9203abc600b3f7f5_9366/ZX_2K_Boost_Shoes_White_FX8835_02_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/7f360335273e45cf9160abc600b3fefc_9366/ZX_2K_Boost_Shoes_White_FX8835_03_standard.jpg",
-        "https://assets.adidas.com/images/w_600,f_auto,q_auto/a6105a11bb96483297c5abc600b40603_9366/ZX_2K_Boost_Shoes_White_FX8835_04_standard.jpg"
-      ],
-      stock: "5",
-      price: "150",
-      id: "6"
-    }
+let moviesList = [
+  {
+    image: "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    title: "Parasite",
+    year: "2019",
+    rating: "8.6",
+    description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    comments: []
+  },
+  {
+    image: "https://m.media-amazon.com/images/M/MV5BM2EwMmRhMmUtMzBmMS00ZDQ3LTg4OGEtNjlkODk3ZTMxMmJlXkEyXkFqcGdeQXVyMjM5ODk1NDU@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    title: "The Queen's Gambit",
+    year: "2020",
+    rating: "8.8",
+    description: "Orphaned at the tender age of nine, prodigious introvert Beth Harmon discovers and masters the game of chess in 1960s USA. But child stardom comes at a price.",
+    comments: [{
+      name: "John",
+      comment: "So boring, i fall asleep to it and hibernated through whole winter"
+    }]
+  },
+  {
+    image: "https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    title: "Joker",
+    year: "2019",
+    rating: "8.5",
+    description: "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker.",
+    comments: [
+      {
+        name: "Marry",
+        comment: "Put on a happy face :)"
+      },
+      {
+        name: "Batman",
+        comment: "My parents was not impressed with this"
+      },
+    ]
+  },
+  {
+    image: "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY268_CR3,0,182,268_AL_.jpg",
+    title: "The Godfather",
+    year: "1972",
+    rating: "9.2",
+    description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    comments: []
+  },
+  {
+    image: "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_UY268_CR1,0,182,268_AL_.jpg",
+    title: "Pulp Fiction",
+    year: "1994",
+    rating: "8.9",
+    description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    comments: []
+  },
+  {
+    image: "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    title: "The Shining",
+    year: "1980",
+    rating: "8.4",
+    description: "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
+    comments: [{
+      name: "Jane",
+      comment: "Soundtrack is epic"
+    }]
+  },
 ]
-  
-  
 
 
+const container = document.getElementById ('container')
+const list = document.getElementById('list')
+const movie = document.getElementById('movie')
+const infoPoster = document.getElementById("infoPoster")
+const titleBig = document.getElementById('titleBig')
+const ratingBig = document.getElementById('ratingBig')
+const ratingStars = document.getElementById('ratingStars')
+const description = document.getElementById('description')
+const backBtn = document.getElementById('backBtn')
+const inputName = document.getElementById('inputName')
+const inputText = document.getElementById('inputText')
+const submitBtn = document.getElementById('submitBtn')
+const commentList = document.getElementById('commentList')
+const openAddModal = document.getElementById('openAddModal')
+const addModalContainer = document.getElementById('addModalContainer')
+const addTitle = document.getElementById('addTitle')
+const addPoster = document.getElementById('addPoster')
+const addYear = document.getElementById('addYear')
+const addRating = document.getElementById('addRating')
+const addBtn = document.getElementById('addBtn')
+const cancelBtn = document.getElementById('cancelBtn')
+const addDescription = document.getElementById('addDescription')
 
-let inStock=[]
-colorContainers()
-function colorContainers(){
-    for(let i=0; i<6; i++){
-        firstPicture[i].style.background =`url(${products[i].photos[0]})`
-        firstPicture[i].style.backgroundSize =`cover`
-        firstPicture[i].style.backgroundPosition =`center`
-        name[i].innerHTML=`${products[i].title}`
-        stock[i].innerHTML=`stock: ${products[i].stock}`
-        inStock.push(products[i].stock);
-    }
+
+let filteredMovie
+
+function displayList() {
+container.style.display = 'flex'
+movie.style.display = 'none'
+list.innerHTML = ''
+  moviesList.map( item => {
+
+      let card = document.createElement('div')
+      card.classList.add('movieCard')
+      let poster = document.createElement('div')
+      poster.classList.add('poster')
+      let posterImg = document.createElement('img')
+      posterImg.src = item.image
+      let infoSide = document.createElement('div')
+      infoSide.classList.add('infoSide')
+      let title = document.createElement('div')
+      title.classList.add('title')
+      title.innerText = item.title
+      let info = document.createElement('div')
+      info. classList.add('info')
+      let year = document.createElement('h3')
+      year.classList.add('year')
+      year.innerText = item.year
+      let rating = document.createElement('h3')
+      rating.classList.add('rating')
+      rating.innerText = item.rating 
+      let comments = document.createElement('h3')
+      comments.classList.add('comments')
+      comments.innerText = `comments: ${item.comments.length}`
+      let enter = document.createElement('div')
+      enter.classList.add('enter')
+      enter.innerText = 'Watch!'
+
+      list.appendChild(card)
+      card.appendChild(poster)
+      card.appendChild(infoSide)
+      poster.appendChild(posterImg)
+      infoSide.appendChild(title)
+      infoSide.appendChild(info)
+      infoSide.appendChild(enter)
+      info.appendChild(year)
+      info.appendChild(rating)
+      info.appendChild(comments)
+
+      enter.addEventListener('click', enterMovie)
+  })
+}
+
+displayList()
+
+function enterMovie (event) {
+  console.log(event.path[1].children[0].innerText);
+  filteredMovie = moviesList.filter(el => el.title == event.path[1].children[0].innerText)[0]
+  displayMovie()
+  console.log(filteredMovie);
+}
+
+function displayMovie() {
+
+container.style.display = 'none'
+movie.style.display = 'flex'
+
+infoPoster.src = filteredMovie.image
+titleBig.innerText = filteredMovie.title
+ratingBig.innerText = filteredMovie.rating
+description.innerText = filteredMovie.description
+displayStars()
+displayComments()
+}
+
+function displayStars() {
+ratingStars.innerHTML = ''
+for (let x = 0; x < Math.round(filteredMovie.rating/2)  ; x++) {
+  console.log(x);
+  ratingStars.innerHTML += '<i class="fas fa-star"></i>'
+}
+}
+
+function submitComment(event) {
+console.log(event.path[1].children[0].value);
+if (event.path[1].children[0].value.length != 0 && event.path[1].children[1].value.length != 0) {
+  let newComment = {
+    name: event.path[1].children[0].value,
+    comment: event.path[1].children[1].value
+  }
+  moviesList[moviesList.indexOf(filteredMovie)].comments.push(newComment)
+  console.log(moviesList[moviesList.indexOf(filteredMovie)].comments);
+}
+displayComments()
+event.path[1].children[0].value = ''
+event.path[1].children[1].value = ''
+}
+
+function displayComments() {
+commentList.innerHTML = ''
+moviesList[moviesList.indexOf(filteredMovie)].comments.map ( item => {
+  let commentCard = document.createElement('div')
+  commentCard.classList.add('commentCard')
+  let comentName = document.createElement('div')
+  comentName.innerText = item.name
+  comentName.classList.add('comentName')
+  let comentText = document.createElement('div')
+  comentText.innerText = item.comment
+  let commentRemove = document.createElement('div')
+  commentRemove.classList.add('commentRemove')
+  commentRemove.innerHTML = '<i class="far fa-trash-alt"></i>'
+
+  commentList.appendChild(commentCard)
+  commentCard.appendChild(comentName)
+  commentCard.appendChild(comentText)
+  commentCard.appendChild(commentRemove)
+
+  commentRemove.addEventListener('click', removeComment)
+})
+
 }
 
 
-shopNowButton.addEventListener('click', startShopping)
-
-
-function startShopping(){
-    intro.style.display="none"
-    main.style.display="block"
+function removeComment (event) {
+moviesList[moviesList.indexOf(filteredMovie)].comments = moviesList[moviesList.indexOf(filteredMovie)].comments.filter(el => el.comment !== event.path[2].children[1].innerText)
+console.log(event);
+displayComments()
+}
+function addMovie() {
+let newMovie = {}
+newMovie.title = addTitle.value
+newMovie.image = addPoster.value
+newMovie.year = addYear.value
+newMovie.rating = addRating.value
+newMovie.description = addDescription.value
+newMovie.comments= []
+if(newMovie.title.length != 0 && newMovie.image.length != 0 && newMovie.year.length == 4 && newMovie.rating.length != 0 && newMovie.description.length != 0) {
+  moviesList.unshift(newMovie)
+  displayList()
+  closeModal()
 }
 
-const container = document.getElementsByClassName('container')
-const productPage = document.getElementById('productPage')
-const displayedPrice = document.getElementById('displayedPrice')
-const backButton = document.getElementsByClassName('backButton')
-const title2 = document.getElementById('title2')
-
-
-let selectedId
-
-function openItsPage(){
-    productPage.style.display="block"
-    main.style.display="none"
-    displayedPrice.innerHTML=`$${products[selectedId].price}`
-    title2.innerHTML=`${products[selectedId].title}`
 }
 
+function opennewMovieCard () {
+addModalContainer.style.display = "flex"
+addTitle.value = ''
+addPoster.value = ''
+addYear.value = ''
+addRating.value = ''
+addDescription.value = ''
+}
 
-container[0].addEventListener('click', id_0)
-container[1].addEventListener('click', id_1)
-container[2].addEventListener('click', id_2)
-container[3].addEventListener('click', id_3)
-container[4].addEventListener('click', id_4)
-container[5].addEventListener('click', id_5)
-function id_0(){selectedId=0;openItsPage()}
-function id_1(){selectedId=1;openItsPage()}
-function id_2(){selectedId=2;openItsPage()}
-function id_3(){selectedId=3;openItsPage()}
-function id_4(){selectedId=4;openItsPage()}
-function id_5(){selectedId=5;openItsPage()}
+function closeModal() {
+addModalContainer.style.display = "none"
 
-
-backButton[0].addEventListener('click', goBack)
-
-function goBack(){
-    productPage.style.display="none"
-    main.style.display="block"
 }
 
 
 
-const addToCartButton = document.getElementById('addToCartButton')
-addToCartButton.addEventListener('click', addTocart)
-
-let cartWorth=0
-
-
-function addTocart(){
-    let triggers=[false, false, false, false, false, false]
-    if(inStock[selectedId]!==0){
-        cartWorth+=products[selectedId].price*1
-        goToCartButton.innerHTML=`$${cartWorth} CART`
-        inStock[selectedId]--
-        addToCartButton.innerHTML="ADDED TO CART"
-        setInterval(myTimer1, 1000);
-        function myTimer1() {
-            addToCartButton.innerHTML="ADD TO CART"
-        }
-        triggers[selectedId]=true
-    }
-    else{
-        addToCartButton.innerHTML="OUT OF STOCK"
-    }
-    triggers.map(item => {
-        if(item){
-
-        }
-    })
-
-}
-
-
-const cartScreen = document.getElementById('cartScreen')
-
-
-goToCartButton.addEventListener('click', goToCart)
-backButton[1].addEventListener('click', goBack2)
-
-function goToCart(){
-    cartScreen.style.display="block"
-    productPage.style.display="none"
-    main.style.display="none"
-}
-
-
-function goBack2(){
-    cartScreen.style.display="none"
-    productPage.style.display="none"
-    main.style.display="block"
-}
+backBtn.addEventListener('click', displayList)
+submitBtn.addEventListener('click', submitComment)
+openAddModal.addEventListener('click', opennewMovieCard)
+cancelBtn.addEventListener('click', closeModal)
+addBtn.addEventListener('click', addMovie)
